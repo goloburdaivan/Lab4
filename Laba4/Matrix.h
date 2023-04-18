@@ -6,6 +6,8 @@
 #include<iostream>
 #include<iomanip>
 #include<memory>
+#include "InvalidInitList.h"
+
 #pragma once
 
 class Matrix {
@@ -28,7 +30,7 @@ public:
 	Matrix(Matrix& matrix);
 
 	// Do not use with uniform init!!!
-	Matrix(std::initializer_list<std::initializer_list<int>>);
+	Matrix(std::initializer_list<std::initializer_list<int>>) throw(InvalidInitList);
 
 	int m_norm() const;
 	int l_norm() const;
