@@ -13,6 +13,12 @@ public:
 	// Construct with parametres (int size - size of the matrix.);
 	Matrix(int size) {}
 
+	// Copy constructor
+	Matrix(Matrix& matrix);
+
+	// Move constructor;
+	Matrix(Matrix&& matrix);
+
 	// Do not use with uniform init!!!
 	Matrix(std::initializer_list<std::initializer_list<int>>);
 
