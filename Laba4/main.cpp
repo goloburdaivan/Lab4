@@ -1,7 +1,7 @@
 #include "Matrix.h"
 
 int main() {
-	Matrix matrix(5);
+	Matrix matrix;
 
 	std::cout << matrix;
 
@@ -12,9 +12,9 @@ int main() {
 	std::cout << "Matrix k-normal: " << matrix.k_norm() << std::endl;
 
 	try {
-		Matrix init_list = { {1, 2}, {3, 4} };
+		Matrix init_list = { {1, 2, 3}, {3, 4, 5}, {6, 7, 8} };
 
-		std::cout << init_list << std::endl;
+		std::cout << init_list + copy << std::endl;
 	}
 	catch (const InvalidInitList& exception) {
 		std::cout << exception.info() << std::endl;

@@ -35,14 +35,15 @@ public:
 	int m_norm() const;
 	int l_norm() const;
 	double k_norm() const;
-
+	int size() const;
+	void clear();
 
 	int* operator[](const int index) const {
 		return memory[index];
 	}
 
-	friend Matrix operator+(const Matrix& matrix);
-	friend Matrix operator*(const Matrix& matrix);
+	Matrix operator+(const Matrix& matrix);
+	Matrix operator*(const Matrix& matrix);
 	friend std::ostream& operator<<(std::ostream& out, const Matrix& matrix);
 
 	~Matrix();

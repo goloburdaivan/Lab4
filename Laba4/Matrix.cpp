@@ -141,11 +141,26 @@ double Matrix::k_norm() const {
 	return sqrt(sum);
 }
 
-Matrix operator+(const Matrix& matrix) {
-	Matrix result(matrix._size);
+int Matrix::size() const {
+	return _size;
+}
 
-	for (size_t i = 0; i < matrix._size; i++) {
+void Matrix::clear() {
+	for (size_t i = 0; i < _size; i++) {
+		for (size_t j = 0; j < _size; j++) {
+			memory[i][j] = 0;
+		}
+	}
+}
 
+Matrix Matrix::operator+(const Matrix& matrix) {
+	size_t size = matrix.size();
+	Matrix result(size);
+
+	for (size_t i = 0; i < size; i++) {
+		for (size_t j = 0; j < size; j++) {
+			result[i][j] = memory[i][j] + matrix[i][j];
+		}
 	}
 
 	return result;
