@@ -1,6 +1,7 @@
 #include "Matrix.h"
 
 void Matrix::init() {
+
 #ifdef _DEBUG
 	std::cout << "[DEBUG] Memory init." << std::endl;
 #endif // _DEBUG
@@ -10,6 +11,26 @@ void Matrix::init() {
 	for (size_t i = 0; i < _size; i++) {
 		memory[i] = new int[_size];
 	}
+}
+
+void Matrix::fill_random() {
+	srand(time(NULL));
+	for (size_t i = 0; i < _size; i++) {
+		for (size_t j = 0; j < _size; j++) {
+			memory[i][j] = rand() % 100;
+		}
+	}
+}
+
+Matrix::Matrix() : _size(3) {
+
+	init();
+	fill_random();
+}
+
+Matrix::Matrix(size_t size) : _size(size) {
+	init();
+	fill_random();
 }
 
 Matrix::~Matrix() {
@@ -67,24 +88,16 @@ int Matrix::l_norm() const {
 }
 
 double Matrix::k_norm() const {
-	for (size_t i = 0; i < _size; i++) {
-		for (size_t j = 0; j < _size; j++) {
 
-		}
-	}
-}
-
-Matrix::Matrix(): _size(3) {
-
-	init();
-
-	srand(time(NULL));
+	double sum = 0;
 
 	for (size_t i = 0; i < _size; i++) {
 		for (size_t j = 0; j < _size; j++) {
-			memory[i][j] = rand() % 100;
+			sum += pow(memory[i][j], 2);
 		}
 	}
+
+	return sqrt(sum);
 }
 
 std::ostream& operator<<(std::ostream& out, const Matrix& matrix) {

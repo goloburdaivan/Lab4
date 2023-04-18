@@ -17,13 +17,15 @@ private:
 	size_t _size;
 
 	void init();
+
+	void fill_random();
 public:
 
 	// Default constructor
 	Matrix();
 
 	// Construct with parametres (int size - size of the matrix.);
-	Matrix(int size);
+	Matrix(size_t size);
 
 	// Copy constructor
 	Matrix(Matrix& matrix);
