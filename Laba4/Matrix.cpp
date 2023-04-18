@@ -33,7 +33,7 @@ Matrix::Matrix(size_t size) : _size(size) {
 	fill_random();
 }
 
-Matrix::Matrix(Matrix& matrix) : _size(matrix._size) {
+Matrix::Matrix(const Matrix& matrix) : _size(matrix._size) {
 
 	if (matrix.memory != nullptr) {
 		init();
@@ -166,10 +166,25 @@ Matrix Matrix::operator+(const Matrix& matrix) {
 	return result;
 }
 
+Matrix Matrix::operator*(const Matrix& matrix) {
+	Matrix result(_size);
+	result.clear();
+
+	for (size_t i = 0; i < _size; i++) {
+		for (size_t j = 0; j < _size; j++) {
+			for (size_t k = 0; k < _size; k++) {
+				result[i][j] += memory[i][k] * matrix[k][j];
+			}
+		}
+	}
+
+	return result;
+}
+
 std::ostream& operator<<(std::ostream& out, const Matrix& matrix) {
 	for (size_t i = 0; i < matrix._size; i++) {
 		for (size_t j = 0; j < matrix._size; j++) {
-			out << std::setw(5) << std::setfill(' ') << matrix.memory[i][j] << " ";
+			out << std::setw(8) << std::setfill(' ') << matrix.memory[i][j] << " ";
 		}
 
 		out << std::endl;
