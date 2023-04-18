@@ -1,33 +1,43 @@
+
+// For debugging
+#define _DEBUG
+
+// Standart libs.
+#include<iostream>
+#include<iomanip>
 #include<memory>
+
+
+
 #pragma once
 
 class Matrix {
 private:
-	std::unique_ptr<std::unique_ptr<int[]>> memory;
-	int _size;
+	int** memory;
+	size_t _size;
+
+	void init();
 public:
 
 	// Default constructor
-	Matrix() {}
+	Matrix();
 
 	// Construct with parametres (int size - size of the matrix.);
-	Matrix(int size) {}
+	Matrix(int size);
 
 	// Copy constructor
 	Matrix(Matrix& matrix);
 
-	// Move constructor;
-	Matrix(Matrix&& matrix);
-
 	// Do not use with uniform init!!!
 	Matrix(std::initializer_list<std::initializer_list<int>>);
 
-	double m_norm() const;
-	double l_norm() const;
+	int m_norm() const;
+	int l_norm() const;
 	double k_norm() const;
 
 	friend Matrix operator+(const Matrix& matrix);
 	friend Matrix operator*(const Matrix& matrix);
+	friend std::ostream& operator<<(std::ostream& out, const Matrix& matrix);
 
 	~Matrix();
 };
