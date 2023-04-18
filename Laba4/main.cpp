@@ -11,5 +11,14 @@ int main() {
 	std::cout << "Matrix l-normal: " << matrix.l_norm() << std::endl;
 	std::cout << "Matrix k-normal: " << matrix.k_norm() << std::endl;
 
+	try {
+		Matrix init_list = { {1, 2}, {3, 4} };
+
+		std::cout << init_list << std::endl;
+	}
+	catch (const InvalidInitList& exception) {
+		std::cout << exception.info() << std::endl;
+	}
+
 	return 0;
 }

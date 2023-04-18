@@ -45,6 +45,35 @@ Matrix::Matrix(Matrix& matrix) : _size(matrix._size) {
 	}
 }
 
+Matrix::Matrix(std::initializer_list<std::initializer_list<int>> list) throw(InvalidInitList) {
+
+#ifdef _DEBUG
+	std::cout << "[DEBUG] Called init list constructor" << std::endl;
+#endif // _DEBUG
+
+
+	size_t rows = list.size();
+
+	for (auto row : list) {
+		if (row.size() != rows) throw InvalidInitList();
+	}
+
+	_size = rows;
+
+	init();
+
+	size_t i = 0;
+	size_t j = 0;
+	for (auto row : list) {
+		j = 0;
+		for (auto element : row) {
+			memory[i][j++] = element;
+		}
+
+		i++;
+	}
+}
+
 Matrix::~Matrix() {
 	
 #ifdef _DEBUG
