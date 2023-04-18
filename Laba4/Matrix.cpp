@@ -46,6 +46,34 @@ int Matrix::m_norm() const {
 	return max;
 }
 
+int Matrix::l_norm() const {
+	int max = 0;
+	int sum = 0;
+
+	for (size_t i = 0; i < _size; i++) {
+
+		sum = 0;
+
+		for (size_t j = 0; j < _size; j++) {
+			sum += memory[j][i];
+		}
+
+		if (sum > max) {
+			max = sum;
+		}
+	}
+
+	return max;
+}
+
+double Matrix::k_norm() const {
+	for (size_t i = 0; i < _size; i++) {
+		for (size_t j = 0; j < _size; j++) {
+
+		}
+	}
+}
+
 Matrix::Matrix(): _size(3) {
 
 	init();
