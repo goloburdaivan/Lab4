@@ -6,14 +6,11 @@
 #include<iostream>
 #include<iomanip>
 #include<memory>
-
-
-
 #pragma once
 
 class Matrix {
 private:
-	int** memory;
+	int** memory = nullptr;
 	size_t _size;
 
 	void init();

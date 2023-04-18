@@ -33,6 +33,18 @@ Matrix::Matrix(size_t size) : _size(size) {
 	fill_random();
 }
 
+Matrix::Matrix(Matrix& matrix) : _size(matrix._size) {
+
+	if (matrix.memory != nullptr) {
+		init();
+		for (size_t i = 0; i < _size; i++) {
+			for (size_t j = 0; j < _size; j++) {
+				memory[i][j] = matrix.memory[i][j];
+			}
+		}
+	}
+}
+
 Matrix::~Matrix() {
 	
 #ifdef _DEBUG
