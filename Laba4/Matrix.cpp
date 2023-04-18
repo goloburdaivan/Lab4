@@ -141,6 +141,16 @@ double Matrix::k_norm() const {
 	return sqrt(sum);
 }
 
+Matrix operator+(const Matrix& matrix) {
+	Matrix result(matrix._size);
+
+	for (size_t i = 0; i < matrix._size; i++) {
+
+	}
+
+	return result;
+}
+
 std::ostream& operator<<(std::ostream& out, const Matrix& matrix) {
 	for (size_t i = 0; i < matrix._size; i++) {
 		for (size_t j = 0; j < matrix._size; j++) {

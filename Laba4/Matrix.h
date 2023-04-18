@@ -36,6 +36,11 @@ public:
 	int l_norm() const;
 	double k_norm() const;
 
+
+	int* operator[](const int index) const {
+		return memory[index];
+	}
+
 	friend Matrix operator+(const Matrix& matrix);
 	friend Matrix operator*(const Matrix& matrix);
 	friend std::ostream& operator<<(std::ostream& out, const Matrix& matrix);
